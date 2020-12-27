@@ -8,7 +8,7 @@ from emails import generate_email,send
 subject = "Upload Completed - Online Fruit Store"
 sender = 'automation@example.com'
 to = 'student-00-dd39d673243b@example.com'
-email_body = "Upload Completed - Online Fruit Store", "All fruits are uploaded to our website successfully. A detailed list is attached to this email."
+body = """Upload Completed - Online Fruit Store", "All fruits are uploaded to our website successfully. A detailed list is attached to this email."""
 attachment = '/tmp/processed.pdf'
 input_path = "./supplier-data/descriptions/"
 
@@ -31,7 +31,7 @@ if __name__ == "__main__":
     process_str = "Processed Update on {}".format(today_str)
     output_para = "".join(output)
     generate_report(attachment,process_str,output_para)
-    email = generate_email(sender,to, subject ,email_body ,attachment)
+    email = generate_email(sender,to, subject ,body ,attachment)
     send(email)
 
 
