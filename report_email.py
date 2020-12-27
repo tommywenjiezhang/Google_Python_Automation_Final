@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+
 from datetime import date
 import os
 from reports import generate_report
-
+from emails import generate_email,send
 
 def getNameAndWeight(input_path, sep):
     output = []
@@ -21,6 +23,8 @@ if __name__ == "__main__":
     today_str = today.strftime("%d %B, %Y")
     process_str = "Processed Update on {}".format(today_str)
     output_para = "".join(output)
-    generate_report('./new.pdf',process_str,output_para)
+    generate_report('/tmp/processed.pdf',process_str,output_para)
+    email = generate_email('automation@example.com',  'username@example.com', "Upload Completed - Online Fruit Store", "All fruits are uploaded to our website successfully. A detailed list is attached to this email.",'/tmp/processed.pdf')
+    send(email)
 
 
