@@ -3,10 +3,10 @@ from emails import generate_email, send
 import socket
 import time
 import shutil
+import threading
 
-total, used, free = shutil.disk_usage("/")
-
-if __name__ == "__main__":
+def main():
+    total, used, free = shutil.disk_usage("/")
     cpu_percent = psutil.cpu_percent()
     disk_usage = used/ total
     p = psutil.Process()
@@ -33,3 +33,9 @@ if __name__ == "__main__":
             message = "Error - Available memory is less than 500MB"
             email = generate_email(sender, to, message, body )
             send(email)
+
+if __name__ == "__main__":
+    t = threading.Thread(target=main)
+    t.start()
+
+    
