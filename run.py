@@ -5,7 +5,7 @@ import re
 
 
 dir="./supplier-data/descriptions/"
-url= "http://34.69.16.100/fruits/"
+url= "http://34.122.66.212/fruits/"
 
 for file in os.listdir(dir):
     tipos = ["name","weight","description"]
